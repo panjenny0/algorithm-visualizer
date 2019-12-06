@@ -20,23 +20,47 @@ export default class SortingVisualizer extends React.Component {
     // resets array and iterates 100 times, generates random values from 5-1000
     resetArray() {
         const array = [];
-        for (let i = 0; i < 100; i++) {
-            array.push(randomIntFromInterval(5, 1000));
+        // TODO: find dims of screen, calculate the upper limit
+        for (let i = 0; i < 60; i++) {
+            array.push(randomIntFromInterval(5, 500));
         }
         this.setState({array});
+    }
+
+    mergeSort() {
+
+    }
+
+    quickSort() {
+
+    }
+
+    heapSort() {
+
+    }
+
+    bubbleSort() {
+
     }
 
     render() {
         const {array} = this.state;
 
         return (
-            <>
+            <div className="array-container">
             {array.map((value, idx) => (
-                <div className="array-bar" key={idx}>
-                    {value}
+                <div className="array-bar" 
+                key={idx}
+                style={{height: `${value}px`}}>
                 </div>
             ))}
-            </>
+            {/* Used double arrow for this.context*/}
+            <button onClick={() => this.resetArray()}>Generate New Array</button>
+            <button onClick={() => this.mergeSort()}>Merge Sort</button>
+            <button onClick={() => this.quickSort()}>Quick Sort</button>
+            <button onClick={() => this.heapSort()}>Heap Sort</button>
+            <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+            </div>
         );
     }
 }
