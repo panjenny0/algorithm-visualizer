@@ -1,4 +1,5 @@
 import React from 'react';
+import * as sortingAlgorithms from '../SortingAlgorithms/sortingAlgorithms.js';
 import './SortingVisualizer.css';
 
 export default class SortingVisualizer extends React.Component {
@@ -28,19 +29,31 @@ export default class SortingVisualizer extends React.Component {
     }
 
     mergeSort() {
-
+        const sorted = sortingAlgorithms.mergeSort(this.state.array);
     }
 
-    quickSort() {
+    quickSort() { }
 
-    }
+    heapSort() { }
 
-    heapSort() {
+    bubbleSort() { }
 
-    }
-
-    bubbleSort() {
-
+    testSortingAlgorithms() {
+        // creates 100 arrays
+        for (let i = 0; i < 100; i++) {
+            const array = [];
+            const bound = randomIntFromInterval(0, 1000)
+            // every array random length between 0 and 1000
+            for (let j = 0; j < bound; j++) {
+                // push random integer from -1000 to 1000
+                array.push(randomIntFromInterval(-1000, 1000));
+            }
+            // js build in sort
+            const jsSortedArray = array.slice().sort((a,b) => a - b);
+            // mergeSort
+            const sorted = sortingAlgorithms.mergeSort(array.slice());
+            console.log(arraysAreEqual(jsSortedArray, sorted));
+        }
     }
 
     render() {
@@ -60,6 +73,7 @@ export default class SortingVisualizer extends React.Component {
             <button onClick={() => this.quickSort()}>Quick Sort</button>
             <button onClick={() => this.heapSort()}>Heap Sort</button>
             <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+            <button onClick={() => this.testSortingAlgorithms()}>Test Sorting Algorithms</button>
             </div>
         );
     }
@@ -67,4 +81,12 @@ export default class SortingVisualizer extends React.Component {
 
 function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function arraysAreEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
 }
