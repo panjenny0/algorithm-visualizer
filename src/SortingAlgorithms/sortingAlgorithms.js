@@ -1,4 +1,5 @@
 export const mergeSort = array => {
+    /*
     if (array.length === 1) return array;
     const mid = Math.floor(array.length / 2);
     // slice returns the selected elements in an array into a new array object `slice(start, end)`
@@ -17,5 +18,5 @@ export const mergeSort = array => {
     }
     while (i < firstHalf.length) sorted.push(firstHalf[i++]);
     while (j < secondHalf.length) sorted.push(secondHalf[j++]);
-    return sorted
+    return sorted*/
 };
