@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {getMergeSortAnimations} from '../SortingAlgorithms/sortingAlgorithms.js';
 import './SortingVisualizer.css';
@@ -6,10 +7,10 @@ import './SortingVisualizer.css';
 const ANIMATION_SPEED_MS = 5;
 
 // number of array bars = 60
-const ARRAY_BARS = 60;
+const ARRAY_BARS = 180;
 
 // main colour of array bars
-const PRIMARY_COLOUR = 'teal';
+const PRIMARY_COLOUR = 'turquoise';
 
 // colour of array bars that are being compared throughout the animations
 const SECONDARY_COLOUR = 'pink';
@@ -21,7 +22,6 @@ export default class SortingVisualizer extends React.Component {
         this.state = {
             // array store in state - main array
             array: [],
-
         };
     }
 
@@ -42,8 +42,8 @@ export default class SortingVisualizer extends React.Component {
 
     mergeSort() {
         const animations = getMergeSortAnimations(this.state.array);
-        for (let i = 0; i< animations.length; i++) {
-            const bars = document.getElementsByName('array-bar');
+        for (let i = 0; i < animations.length; i++) {
+            const bars = document.getElementsByClassName('array-bar');
             const colourChange = i % 3 !== 2;
             if (colourChange) {
                 const [barOneIdx, barTwoIdx] = animations[i];
